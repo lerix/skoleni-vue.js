@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Basic Vue.js App</title>
 </head>
+
 <body>
     <div id="app">
         <p>{{ message }}</p>
         <button v-on:click="reverseMessage">Reverse Message</button>
+        <hr />
+        <span v-bind:title="title">
+            Hover your mouse over me for a few seconds
+            to see my dynamically bound title!
+        </span>
+        <hr />
+        <span v-if="seen" v->Now you see me</span>
+        <hr />
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ul>
     </div>
 </body>
-    <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <!-- production version, optimized for size and speed -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-    <script>
-        var app5 = new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue.js!',
-            },
-            methods: {
-                reverseMessage: function () {
-                    this.message = this.message.split('').reverse().join('')
-                }
+<!-- production version, optimized for size and speed -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            title: 'You loaded this page on ' + new Date().toLocaleString(),
+            seen: true,
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue' },
+                { text: 'Build something awesome' }
+            ]
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
             }
-        })
-    </script>
+        }
+    })
+</script>
+
 </html>
