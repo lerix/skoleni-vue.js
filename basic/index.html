@@ -13,9 +13,6 @@
         <p>{{ messageAndTime }}</p>
         <hr />
 
-        <p>{{ message }}</p>
-        <button v-on:click="reverseMessage">Reverse Message</button>
-        <hr />
 
         <span v-bind:title="title">
             Hover your mouse over me for a few seconds
@@ -60,7 +57,7 @@
     new Vue({
         el: '#app',
         data: {
-            messaage: 'Hello Vue.js!',
+            message: 'Hello Vue.js!',
             time: null,
             title: 'You loaded this page on ' + new Date().toLocaleString(),
             seen: true,
@@ -83,7 +80,7 @@
         },
         computed: {
             messageAndTime: function () {
-                return this.messaage + ' ' + this.time
+                return this.message + ' ' + this.time
             }
         }
     })
